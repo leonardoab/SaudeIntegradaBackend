@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace SaudeIntegrada.Domain
 {
-   
     public class PessoaMapping : IEntityTypeConfiguration<Pessoa>
     {
         public void Configure(EntityTypeBuilder<Pessoa> builder)
@@ -21,9 +20,7 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.Telefone).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DataNascimento).IsRequired();
 
-
-            builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
-
+            //builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

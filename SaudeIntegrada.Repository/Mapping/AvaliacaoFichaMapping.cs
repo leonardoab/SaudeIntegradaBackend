@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace SaudeIntegrada.Domain
 {
-   
     public class AvaliacaoFichaMapping : IEntityTypeConfiguration<AvaliacaoFicha>
     {
         public void Configure(EntityTypeBuilder<AvaliacaoFicha> builder)
@@ -24,7 +23,7 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.Observacoes).IsRequired().HasMaxLength(200);
 
             builder.HasMany(x => x.Fichas).WithOne().OnDelete(DeleteBehavior.Cascade);
-
+            
         }
     }
 }

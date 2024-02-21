@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace SaudeIntegrada.Domain
 {
-    public class ExercicioFicha : Entity<Guid>
+    public class ExercicioBase : Entity<Guid>
     {
-        public string Sets { get; set; }
-        public string Repeticoes { get; set; }
-        public ExercicioBase ExercicioBase { get; set; }
-        
-
+        public string Nome { get; set; }
     }
 }

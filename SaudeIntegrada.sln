@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaudeIntegrada.Infra", "Sau
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaudeIntegrada.Repository", "SaudeIntegrada.Repository\SaudeIntegrada.Repository.csproj", "{44581938-3DF6-4218-9328-0E2A0A744CB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaudeIntegrada.Api", "SaudeIntegrada.Api\SaudeIntegrada.Api.csproj", "{B57D03F7-D007-4508-A469-5ADD1A545B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaudeIntegrada.Tests", "SaudeIntegrada.Tests\SaudeIntegrada.Tests.csproj", "{13782979-3FB3-4A49-B5CD-81E516919311}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{44581938-3DF6-4218-9328-0E2A0A744CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44581938-3DF6-4218-9328-0E2A0A744CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44581938-3DF6-4218-9328-0E2A0A744CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57D03F7-D007-4508-A469-5ADD1A545B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57D03F7-D007-4508-A469-5ADD1A545B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57D03F7-D007-4508-A469-5ADD1A545B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57D03F7-D007-4508-A469-5ADD1A545B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13782979-3FB3-4A49-B5CD-81E516919311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13782979-3FB3-4A49-B5CD-81E516919311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13782979-3FB3-4A49-B5CD-81E516919311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13782979-3FB3-4A49-B5CD-81E516919311}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
