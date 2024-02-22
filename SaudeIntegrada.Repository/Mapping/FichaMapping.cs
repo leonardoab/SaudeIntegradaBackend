@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SaudeIntegrada.Domain;
+using SaudeIntegrada.Domain.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Domain
+namespace SaudeIntegrada.Domain.Domains
 {
     public class AvaliacaoFicha : Entity<Guid>
     {

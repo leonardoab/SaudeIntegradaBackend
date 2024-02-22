@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SaudeIntegrada.Domain;
+using SaudeIntegrada.Domain.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Repository
+namespace SaudeIntegrada.Repository.Context
 {
 
     public class SaudeIntegradaContext : DbContext

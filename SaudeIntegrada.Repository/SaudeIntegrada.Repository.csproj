@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Context\" />
+    <Compile Remove="SaudeIntegrada.Repository\**" />
+    <EmbeddedResource Remove="SaudeIntegrada.Repository\**" />
+    <None Remove="SaudeIntegrada.Repository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Database\" />
     <Folder Include="Migrations\" />
     <Folder Include="Repository\" />

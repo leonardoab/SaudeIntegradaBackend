@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SaudeIntegrada.Repository;
+using SaudeIntegrada.Repository.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 

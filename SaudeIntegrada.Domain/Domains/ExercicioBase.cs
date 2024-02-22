@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Domain
+namespace SaudeIntegrada.Domain.Domains
 {
-    public class Ficha : Entity<Guid>
+    public class ExercicioBase : Entity<Guid>
     {
         public string Nome { get; set; }
-        public virtual IList<ExercicioFicha> ExerciciosFicha { get; set; }
-
     }
 }

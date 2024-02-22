@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Dto\" />
     <Folder Include="Handler\" />
+    <Folder Include="IService\" />
     <Folder Include="Service\" />
     <Folder Include="Profile\" />
   </ItemGroup>

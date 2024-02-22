@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Domain
+namespace SaudeIntegrada.Domain.Domains
 {
     public class Pessoa : Entity<Guid>
     {
@@ -13,6 +13,9 @@ namespace SaudeIntegrada.Domain
         public string Email { get; set; }
         public string Telefone { get; set; }
         public DateTime DataNascimento { get; set; }
+        public Conta Conta { get; set; }
+
         public virtual IList<AvaliacaoFicha> AvaliacaoFichas { get; set; }
+
     }
 }
