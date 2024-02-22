@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="ValueObject\" />
     <Folder Include="Rules\" />
-    <Folder Include="IRepository\" />
   </ItemGroup>
 
   <ItemGroup>
