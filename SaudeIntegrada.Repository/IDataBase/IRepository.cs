@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq.Expressions;
 
-namespace SaudeIntegrada.Cross.Repository
+namespace SaudeIntegrada.Repository.IDataBase
 {
     public interface IRepository<T> where T : class
     {

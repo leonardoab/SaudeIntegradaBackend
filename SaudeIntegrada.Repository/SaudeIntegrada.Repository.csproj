@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SaudeIntegrada.CrossCutting\SaudeIntegrada.CrossCutting.csproj" />
     <ProjectReference Include="..\SaudeIntegrada.Domain\SaudeIntegrada.Domain.csproj" />
   </ItemGroup>
 

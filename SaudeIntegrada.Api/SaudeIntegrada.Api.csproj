@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SaudeIntegrada.Repository\SaudeIntegrada.Repository.csproj" />
+    <ProjectReference Include="..\SaudeIntegrada.Application\SaudeIntegrada.Application.csproj" />
   </ItemGroup>
 
 </Project>

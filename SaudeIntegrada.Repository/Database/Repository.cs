@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using SaudeIntegrada.Cross.Repository;
 using SaudeIntegrada.Repository.Context;
+using SaudeIntegrada.Repository.IDataBase;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,29 +47,24 @@ namespace SaudeIntegrada.Repository.Database
             await this.Context.SaveChangesAsync();
         }
 
-        /*public async Task<T> FindOneByCriteria(Expression<Func<T, bool>> expression)
+        public IEnumerable<T> GetAll()
         {
-            return await this.Query
-                             .AsNoTrackingWithIdentityResolution()
-                             .FirstOrDefaultAsync(expression);
+            return this.Context.Set<T>().ToList();
         }
 
-        public async Task<IEnumerable<T>> FindAllByCriteria(Expression<Func<T, bool>> expression)
+        public T GetById(Guid id)
         {
-            return await this.Query
-                             .AsNoTrackingWithIdentityResolution()
-                             .Where(expression)
-                             .ToListAsync();
+            return this.Context.Set<T>().Find(id);
         }
 
-        public async Task<IDbContextTransaction> CreateTransaction(IsolationLevel isolation)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
-            return await this.Context.Database.BeginTransactionAsync(isolation);
+            return this.Context.Set<T>().Where(expression);
         }
 
-        public async Task<IDbContextTransaction> CreateTransaction()
+        public bool Exists(Expression<Func<T, bool>> expression)
         {
-            return await this.Context.Database.BeginTransactionAsync();
-        }*/
+            return this.Find(expression).Any();
+        }
     }
 }

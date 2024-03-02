@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaudeIntegrada.Domain\SaudeIntegrada.Domain.csproj" />
+    <ProjectReference Include="..\SaudeIntegrada.Repository\SaudeIntegrada.Repository.csproj" />
   </ItemGroup>
 
 </Project>
