@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SaudeIntegrada.Api.Controllers
 {
+
+    //teste
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
