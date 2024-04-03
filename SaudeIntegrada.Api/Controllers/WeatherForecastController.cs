@@ -4,6 +4,8 @@ namespace SaudeIntegrada.Api.Controllers
 {
 
     //teste
+    //teste
+    
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
