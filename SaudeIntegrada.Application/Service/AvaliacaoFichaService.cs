@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
 using SaudeIntegrada.Domain.IRepository;
+using SaudeIntegrada.Domain.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,26 @@ namespace SaudeIntegrada.Application.Service
         {
             this.AvaliacaoFichaRepository = AvaliacaoFichaRepository;
             this.mapper = mapper;
+        }
+
+        public AvaliacaoFichaDto Criar(AvaliacaoFichaDto dto)
+        {
+            AvaliacaoFicha AvaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            this.AvaliacaoFichaRepository.Save(AvaliacaoFicha);
+
+            return this.mapper.Map<AvaliacaoFichaDto>(AvaliacaoFicha);
+        }
+
+        public AvaliacaoFichaDto Obter(Guid id)
+        {
+            var AvaliacaoFicha = this.AvaliacaoFichaRepository.Get(id);
+            return this.mapper.Map<AvaliacaoFichaDto>(AvaliacaoFicha);
+        }
+
+        public IEnumerable<AvaliacaoFichaDto> ObterTodos()
+        {
+            var AvaliacaoFicha = this.AvaliacaoFichaRepository.GetAll();
+            return this.mapper.Map<IEnumerable<AvaliacaoFichaDto>>(AvaliacaoFicha);
         }
     }
 }

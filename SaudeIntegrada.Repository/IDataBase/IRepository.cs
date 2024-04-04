@@ -14,6 +14,8 @@ namespace SaudeIntegrada.Repository.IDataBase
 
         Task Update(T entity);
 
+        IEnumerable<T> GetAll();
+
         /*Task<IEnumerable<T>> FindAllByCriteria(Expression<Func<T, bool>> expression);
 
         Task<T> FindOneByCriteria(Expression<Func<T, bool>> expression);
