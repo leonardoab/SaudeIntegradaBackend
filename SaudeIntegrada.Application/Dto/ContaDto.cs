@@ -1,21 +1,17 @@
-﻿using SaudeIntegrada.Domain.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Domain.Domains
+namespace SaudeIntegrada.Application.Dto
 {
-    public class Conta : Entity<Guid>
+    public class ContaDto
     {
-        public Pessoa Pessoa { get; set; }
-
+        public Guid Id { get; set; }
         public string Apelido { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public bool Ativo {  get; set; }
-        
-
+        public bool Ativo { get; set; }
     }
 }

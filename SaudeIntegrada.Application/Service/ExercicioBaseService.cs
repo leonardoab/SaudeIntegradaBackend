@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
+using SaudeIntegrada.Domain.Domains;
 using SaudeIntegrada.Domain.IRepository;
 using System;
 using System.Collections.Generic;
@@ -14,10 +16,47 @@ namespace SaudeIntegrada.Application.Service
         private readonly IExercicioBaseRepository ExercicioBaseRepository;
         private readonly IMapper mapper;
 
-        public ExercicioBaseService(IExercicioBaseRepository exercicioBaseRepository, IMapper mapper)
+        public ExercicioBaseService(IExercicioBaseRepository ExercicioBaseRepository, IMapper mapper)
         {
-            ExercicioBaseRepository = exercicioBaseRepository;
+            this.ExercicioBaseRepository = ExercicioBaseRepository;
             this.mapper = mapper;
         }
+
+        public ExercicioBaseDto Criar(ExercicioBaseDto dto)
+        {
+            ExercicioBase exercicioBase = this.mapper.Map<ExercicioBase>(dto);
+            this.ExercicioBaseRepository.Save(exercicioBase);
+
+            return this.mapper.Map<ExercicioBaseDto>(exercicioBase);
+        }
+
+        public ExercicioBaseDto Editar(ExercicioBaseDto dto)
+        {
+            ExercicioBase exercicioBase = this.mapper.Map<ExercicioBase>(dto);
+            this.ExercicioBaseRepository.Update(exercicioBase);
+
+            return this.mapper.Map<ExercicioBaseDto>(exercicioBase);
+        }
+
+        public ExercicioBaseDto Apagar(ExercicioBaseDto dto)
+        {
+            ExercicioBase exercicioBase = this.mapper.Map<ExercicioBase>(dto);
+            this.ExercicioBaseRepository.Delete(exercicioBase);
+
+            return this.mapper.Map<ExercicioBaseDto>(exercicioBase);
+        }
+
+        public ExercicioBaseDto Obter(Guid id)
+        {
+            var exercicioBase = this.ExercicioBaseRepository.GetById(id);
+            return this.mapper.Map<ExercicioBaseDto>(exercicioBase);
+        }
+
+        public IEnumerable<ExercicioBaseDto> ObterTodos()
+        {
+            var exercicioBase = this.ExercicioBaseRepository.GetAll();
+            return this.mapper.Map<IEnumerable<ExercicioBaseDto>>(exercicioBase);
+        }
+
     }
 }

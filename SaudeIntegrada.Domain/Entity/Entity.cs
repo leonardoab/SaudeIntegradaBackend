@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.CrossCutting.Entity
+namespace SaudeIntegrada.Domain.Entity
 {
     public class Entity<T>
     {

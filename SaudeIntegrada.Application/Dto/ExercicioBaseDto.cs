@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaudeIntegrada.Domain.Domains
+namespace SaudeIntegrada.Application.Dto
 {
-    public class ExercicioBase : Entity<Guid>
+    public class ExercicioBaseDto 
     {
+        public Guid Id { get; set; }
         public string Nome { get; set; }
     }
 }

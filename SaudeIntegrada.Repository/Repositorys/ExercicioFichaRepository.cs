@@ -1,6 +1,6 @@
 ﻿using SaudeIntegrada.Domain.Domains;
 using SaudeIntegrada.Repository.Context;
-using SaudeIntegrada.Repository.Database;
+using SaudeIntegrada.Repository.Repositorys;
 using System;
 using System.Collections.Generic;
 using System.Linq;

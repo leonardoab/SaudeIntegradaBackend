@@ -16,32 +16,48 @@ namespace SaudeIntegrada.Application.Service
         private readonly IPessoaRepository PessoaRepository;
         private readonly IMapper mapper;
 
-        public PessoaService(IPessoaRepository pessoaRepository, IMapper mapper)
+        public PessoaService(IPessoaRepository PessoaRepository, IMapper mapper)
         {
-            PessoaRepository = pessoaRepository;
+            this.PessoaRepository = PessoaRepository;
             this.mapper = mapper;
         }
 
-
         public PessoaDto Criar(PessoaDto dto)
         {
-            Pessoa Pessoa = this.mapper.Map<Pessoa>(dto);
-            this.PessoaRepository.Save(Pessoa);
+            Pessoa pessoa = this.mapper.Map<Pessoa>(dto);
+            this.PessoaRepository.Save(pessoa);
 
-            return this.mapper.Map<PessoaDto>(Pessoa);
+            return this.mapper.Map<PessoaDto>(pessoa);
+        }
+
+        public PessoaDto Editar(PessoaDto dto)
+        {
+            Pessoa pessoa = this.mapper.Map<Pessoa>(dto);
+            this.PessoaRepository.Update(pessoa);
+
+            return this.mapper.Map<PessoaDto>(pessoa);
+        }
+
+        public PessoaDto Apagar(PessoaDto dto)
+        {
+            Pessoa pessoa = this.mapper.Map<Pessoa>(dto);
+            this.PessoaRepository.Delete(pessoa);
+
+            return this.mapper.Map<PessoaDto>(pessoa);
         }
 
         public PessoaDto Obter(Guid id)
         {
-            var Pessoa = this.PessoaRepository.Get(id);
-            return this.mapper.Map<PessoaDto>(Pessoa);
+            var pessoa = this.PessoaRepository.GetById(id);
+            return this.mapper.Map<PessoaDto>(pessoa);
         }
 
         public IEnumerable<PessoaDto> ObterTodos()
         {
-            var Pessoa = this.PessoaRepository.GetAll();
-            return this.mapper.Map<IEnumerable<PessoaDto>>(Pessoa);
+            var pessoa = this.PessoaRepository.GetAll();
+            return this.mapper.Map<IEnumerable<PessoaDto>>(pessoa);
         }
+
 
     }
 }

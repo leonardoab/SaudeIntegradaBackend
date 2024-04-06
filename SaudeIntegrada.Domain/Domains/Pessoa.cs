@@ -1,4 +1,4 @@
-﻿using SaudeIntegrada.CrossCutting.Entity;
+﻿using SaudeIntegrada.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace SaudeIntegrada.Domain.Domains
 {
     public class Pessoa : Entity<Guid>
     {
-        public string Nome { get; set; }
-        public string Email { get; set; }
+        public string Nome { get; set; }        
         public string Telefone { get; set; }
         public DateTime DataNascimento { get; set; }
+
         public Conta Conta { get; set; }
 
         public virtual IList<AvaliacaoFicha> AvaliacaoFichas { get; set; }

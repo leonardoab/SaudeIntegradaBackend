@@ -1,5 +1,5 @@
 ﻿using SaudeIntegrada.Domain.Domains;
-using SaudeIntegrada.Repository.IDataBase;
+using SaudeIntegrada.Repository.IRepositorys;
 using System;
 using System.Collections.Generic;
 using System.Linq;

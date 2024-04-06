@@ -18,13 +18,15 @@ namespace SaudeIntegrada.Repository.Mapping
             builder.ToTable("Conta");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
-            builder.Property(x => x.Login).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Email).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Apelido).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Password).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Ativo);
 
 
             builder.HasOne(x => x.Pessoa)
-                   .WithOne(p => p.Conta) // Definindo Pessoa como o lado dependente
-                   .HasForeignKey<Conta>(x => x.Id); // Chave estrangeira
+                   .WithOne(p => p.Conta); // Definindo Pessoa como o lado dependente
+                   
 
 
         }

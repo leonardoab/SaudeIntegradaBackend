@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaudeIntegrada.Application.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,14 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IFichaService
     {
+        FichaDto Criar(FichaDto dto);
+
+        FichaDto Editar(FichaDto dto);
+
+        FichaDto Apagar(FichaDto dto);
+
+        FichaDto Obter(Guid id);
+
+        IEnumerable<FichaDto> ObterTodos();
     }
 }

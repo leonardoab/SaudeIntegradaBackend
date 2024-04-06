@@ -24,22 +24,42 @@ namespace SaudeIntegrada.Application.Service
 
         public AvaliacaoFichaDto Criar(AvaliacaoFichaDto dto)
         {
-            AvaliacaoFicha AvaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
-            this.AvaliacaoFichaRepository.Save(AvaliacaoFicha);
+            AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            this.AvaliacaoFichaRepository.Save(avaliacaoFicha);
 
-            return this.mapper.Map<AvaliacaoFichaDto>(AvaliacaoFicha);
+            return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
+        }
+
+        public AvaliacaoFichaDto Editar(AvaliacaoFichaDto dto)
+        {
+            AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            this.AvaliacaoFichaRepository.Update(avaliacaoFicha);
+
+            return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
+        }
+
+        public AvaliacaoFichaDto Apagar(AvaliacaoFichaDto dto)
+        {
+            AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            this.AvaliacaoFichaRepository.Delete(avaliacaoFicha);
+
+            return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
         }
 
         public AvaliacaoFichaDto Obter(Guid id)
         {
-            var AvaliacaoFicha = this.AvaliacaoFichaRepository.Get(id);
-            return this.mapper.Map<AvaliacaoFichaDto>(AvaliacaoFicha);
+            var avaliacaoFicha = this.AvaliacaoFichaRepository.GetById(id);
+            return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
         }
 
         public IEnumerable<AvaliacaoFichaDto> ObterTodos()
         {
-            var AvaliacaoFicha = this.AvaliacaoFichaRepository.GetAll();
-            return this.mapper.Map<IEnumerable<AvaliacaoFichaDto>>(AvaliacaoFicha);
+            var avaliacaoFicha = this.AvaliacaoFichaRepository.GetAll();
+            return this.mapper.Map<IEnumerable<AvaliacaoFichaDto>>(avaliacaoFicha);
         }
+
+        
+
+        
     }
 }

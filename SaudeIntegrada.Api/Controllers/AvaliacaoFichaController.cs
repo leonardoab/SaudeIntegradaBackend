@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SaudeIntegrada.Application.Dto;
+using SaudeIntegrada.Application.IService;
 using SaudeIntegrada.Application.Service;
 
 namespace SaudeIntegrada.Api.Controllers
@@ -8,7 +9,7 @@ namespace SaudeIntegrada.Api.Controllers
     [ApiController]
     public class AvaliacaoFichaController : ControllerBase
     {
-        private AvaliacaoFichaService _AvaliacaoFichaService;
+        private readonly IAvaliacaoFichaService _AvaliacaoFichaService;
 
         public AvaliacaoFichaController(AvaliacaoFichaService AvaliacaoFichaService)
         {
@@ -47,9 +48,6 @@ namespace SaudeIntegrada.Api.Controllers
             return Created($"/AvaliacaoFicha/{result.Id}", result);
         }
 
-        //TODO CRIAR
-        //TODO EDITAR
-        //TODO DELETAR
-        //TODO LISTAR
+        
     }
 }

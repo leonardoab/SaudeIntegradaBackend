@@ -13,6 +13,7 @@ namespace SaudeIntegrada.Domain
     {
         public void Configure(EntityTypeBuilder<AvaliacaoFicha> builder)
         {
+            //builder.HasMany(x => x.Fichas).WithOne().OnDelete(DeleteBehavior.Cascade);
             builder.ToTable("AvaliacaoFicha");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
@@ -21,9 +22,13 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.Duracao).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DataTesteCarga).IsRequired();
             builder.Property(x => x.DataProximoTesteCarga).IsRequired();
+            builder.Property(x => x.DataCriacao).IsRequired();
             builder.Property(x => x.Observacoes).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.ZonaQueima).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Metodo).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Nivel).IsRequired().HasMaxLength(200);
 
-            builder.HasMany(x => x.Fichas).WithOne().OnDelete(DeleteBehavior.Cascade);
+            
             
         }
     }

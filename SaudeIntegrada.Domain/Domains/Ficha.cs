@@ -1,4 +1,4 @@
-﻿using SaudeIntegrada.CrossCutting.Entity;
+﻿using SaudeIntegrada.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

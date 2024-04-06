@@ -13,15 +13,21 @@ namespace SaudeIntegrada.Domain
     {
         public void Configure(EntityTypeBuilder<Pessoa> builder)
         {
+            
             builder.ToTable("Pessoa");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Email).IsRequired().HasMaxLength(200);
+           
             builder.Property(x => x.Telefone).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DataNascimento).IsRequired();
 
-            //builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(p => p.AvaliacaoFichas)
+                   .WithOne(a => a.Pessoa);  // Definindo a entidade pai (Pessoa) //builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
+
+
+
+
         }
     }
 }

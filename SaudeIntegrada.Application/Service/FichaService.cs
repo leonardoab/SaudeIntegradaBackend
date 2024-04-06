@@ -16,31 +16,48 @@ namespace SaudeIntegrada.Application.Service
         private readonly IFichaRepository FichaRepository;
         private readonly IMapper mapper;
 
-        public FichaService(IFichaRepository fichaRepository, IMapper mapper)
+        public FichaService(IFichaRepository FichaRepository, IMapper mapper)
         {
-            FichaRepository = fichaRepository;
+            this.FichaRepository = FichaRepository;
             this.mapper = mapper;
         }
 
         public FichaDto Criar(FichaDto dto)
         {
-            Ficha Ficha = this.mapper.Map<Ficha>(dto);
-            this.FichaRepository.Save(Ficha);
+            Ficha ficha = this.mapper.Map<Ficha>(dto);
+            this.FichaRepository.Save(ficha);
 
-            return this.mapper.Map<FichaDto>(Ficha);
+            return this.mapper.Map<FichaDto>(ficha);
+        }
+
+        public FichaDto Editar(FichaDto dto)
+        {
+            Ficha ficha = this.mapper.Map<Ficha>(dto);
+            this.FichaRepository.Update(ficha);
+
+            return this.mapper.Map<FichaDto>(ficha);
+        }
+
+        public FichaDto Apagar(FichaDto dto)
+        {
+            Ficha ficha = this.mapper.Map<Ficha>(dto);
+            this.FichaRepository.Delete(ficha);
+
+            return this.mapper.Map<FichaDto>(ficha);
         }
 
         public FichaDto Obter(Guid id)
         {
-            var Ficha = this.FichaRepository.Get(id);
-            return this.mapper.Map<FichaDto>(Ficha);
+            var ficha = this.FichaRepository.GetById(id);
+            return this.mapper.Map<FichaDto>(ficha);
         }
 
         public IEnumerable<FichaDto> ObterTodos()
         {
-            var Ficha = this.FichaRepository.GetAll();
-            return this.mapper.Map<IEnumerable<FichaDto>>(Ficha);
+            var ficha = this.FichaRepository.GetAll();
+            return this.mapper.Map<IEnumerable<FichaDto>>(ficha);
         }
+
 
     }
 }
