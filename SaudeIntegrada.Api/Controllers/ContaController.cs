@@ -29,19 +29,19 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPatch]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] ContaDto dto)
+        public IActionResult Editar( ContaDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
             var result = _contaService.Editar(dto);
 
-            return Created($"/Conta/{result.Id}", result);
+            return Ok( result);
         }
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar([FromBody] ContaDto dto)
+        public IActionResult Apagar( ContaDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();

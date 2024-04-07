@@ -30,19 +30,19 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPatch]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] AvaliacaoFichaDto dto)
+        public IActionResult Editar(AvaliacaoFichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
             var result = this._AvaliacaoFichaService.Editar(dto);
 
-            return Created($"/AvaliacaoFicha/{result.Id}", result);
+            return Ok(result);
         }
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar([FromBody] AvaliacaoFichaDto dto)
+        public IActionResult Apagar( AvaliacaoFichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();

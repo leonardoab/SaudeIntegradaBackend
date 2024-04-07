@@ -18,7 +18,7 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar([FromBody] FichaDto dto)
+        public IActionResult Criar( FichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
@@ -30,19 +30,19 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPatch]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] FichaDto dto)
+        public IActionResult Editar(FichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
             var result = this._FichaService.Editar(dto);
 
-            return Created($"/Ficha/{result.Id}", result);
+            return Ok (result);
         }
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar([FromBody] FichaDto dto)
+        public IActionResult Apagar(FichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
