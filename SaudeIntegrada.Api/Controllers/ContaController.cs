@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
 using SaudeIntegrada.Application.Service;
@@ -7,47 +7,47 @@ namespace SaudeIntegrada.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FichaController : ControllerBase
+    public class ContaController : ControllerBase
     {
-        private readonly IFichaService _FichaService;
+        private readonly IContaService _ContaService;
 
-        public FichaController(FichaService FichaService)
+        public ContaController(ContaService ContaService)
         {
-            _FichaService = FichaService;
+            _ContaService = ContaService;
         }
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar([FromBody] FichaDto dto)
+        public IActionResult Criar([FromBody] ContaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
-            var result = this._FichaService.Criar(dto);
+            var result = this._ContaService.Criar(dto);
 
-            return Created($"/Ficha/{result.Id}", result);
+            return Created($"/Conta/{result.Id}", result);
         }
 
         [HttpPatch]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] FichaDto dto)
+        public IActionResult Editar([FromBody] ContaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
-            var result = this._FichaService.Editar(dto);
+            var result = this._ContaService.Editar(dto);
 
-            return Created($"/Ficha/{result.Id}", result);
+            return Created($"/Conta/{result.Id}", result);
         }
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar([FromBody] FichaDto dto)
+        public IActionResult Apagar([FromBody] ContaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
-            var result = this._FichaService.Apagar(dto);
+            var result = this._ContaService.Apagar(dto);
 
             return Ok();
         }
@@ -56,16 +56,16 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("ListaTodos")]
         public IActionResult ListaTodos()
         {
-            var result = this._FichaService.ObterTodos();
+            var result = this._ContaService.ObterTodos();
 
             return Ok(result);
         }
 
         [HttpGet]
-        [Route("FichasPorId")]
-        public IActionResult GetFichasPorId(Guid id)
+        [Route("ContasPorId")]
+        public IActionResult GetContasPorId(Guid id)
         {
-            var result = this._FichaService.Obter(id);
+            var result = this._ContaService.Obter(id);
 
             if (result == null)
             {

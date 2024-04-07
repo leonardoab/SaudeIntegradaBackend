@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SaudeIntegrada.Application.Dto;
+using SaudeIntegrada.Application.IService;
 using SaudeIntegrada.Application.Service;
 
 namespace SaudeIntegrada.Api.Controllers
@@ -8,22 +9,59 @@ namespace SaudeIntegrada.Api.Controllers
     [ApiController]
     public class PessoaController : ControllerBase
     {
-        private PessoaService _PessoaService;
+        private readonly IPessoaService _PessoaService;
 
         public PessoaController(PessoaService PessoaService)
         {
             _PessoaService = PessoaService;
         }
 
+        [HttpPost]
+        [Route("Criar")]
+        public IActionResult Criar([FromBody] PessoaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._PessoaService.Criar(dto);
+
+            return Created($"/Pessoa/{result.Id}", result);
+        }
+
+        [HttpPatch]
+        [Route("Editar")]
+        public IActionResult Editar([FromBody] PessoaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._PessoaService.Editar(dto);
+
+            return Created($"/Pessoa/{result.Id}", result);
+        }
+
+        [HttpDelete]
+        [Route("Apagar")]
+        public IActionResult Apagar([FromBody] PessoaDto dto)
+        {            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._PessoaService.Apagar(dto);
+
+            return Ok();
+        }
+
         [HttpGet]
-        public IActionResult Listar()
+        [Route("ListaTodos")]
+        public IActionResult ListaTodos()
         {
             var result = this._PessoaService.ObterTodos();
 
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("PessoasPorId")]
         public IActionResult GetPessoasPorId(Guid id)
         {
             var result = this._PessoaService.Obter(id);
@@ -36,20 +74,8 @@ namespace SaudeIntegrada.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
-        public IActionResult Criar([FromBody] PessoaDto dto)
-        {
-            if (ModelState is { IsValid: false })
-                return BadRequest();
 
-            var result = this._PessoaService.Criar(dto);
 
-            return Created($"/Pessoa/{result.Id}", result);
-        }
 
-        //TODO CRIAR
-        //TODO EDITAR
-        //TODO DELETAR
-        //TODO LISTAR
     }
 }

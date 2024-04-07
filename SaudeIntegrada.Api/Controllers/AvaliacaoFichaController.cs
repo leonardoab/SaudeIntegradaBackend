@@ -16,15 +16,53 @@ namespace SaudeIntegrada.Api.Controllers
             _AvaliacaoFichaService = AvaliacaoFichaService;
         }
 
+        [HttpPost]
+        [Route("Criar")]
+        public IActionResult Criar([FromBody] AvaliacaoFichaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._AvaliacaoFichaService.Criar(dto);
+
+            return Created($"/AvaliacaoFicha/{result.Id}", result);
+        }
+
+        [HttpPatch]
+        [Route("Editar")]
+        public IActionResult Editar([FromBody] AvaliacaoFichaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._AvaliacaoFichaService.Editar(dto);
+
+            return Created($"/AvaliacaoFicha/{result.Id}", result);
+        }
+
+        [HttpDelete]
+        [Route("Apagar")]
+        public IActionResult Apagar([FromBody] AvaliacaoFichaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._AvaliacaoFichaService.Apagar(dto);
+
+            return Ok();
+        }
+
         [HttpGet]
-        public IActionResult Listar()
+        [Route("ListaTodos")]
+        public IActionResult ListaTodos()
         {
             var result = this._AvaliacaoFichaService.ObterTodos();
 
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("AvaliacaoFichasPorId")]
         public IActionResult GetAvaliacaoFichasPorId(Guid id)
         {
             var result = this._AvaliacaoFichaService.Obter(id);
@@ -37,17 +75,8 @@ namespace SaudeIntegrada.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
-        public IActionResult Criar([FromBody] AvaliacaoFichaDto dto)
-        {
-            if (ModelState is { IsValid: false })
-                return BadRequest();
 
-            var result = this._AvaliacaoFichaService.Criar(dto);
 
-            return Created($"/AvaliacaoFicha/{result.Id}", result);
-        }
 
-        
     }
 }
