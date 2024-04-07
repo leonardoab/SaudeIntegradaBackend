@@ -11,7 +11,7 @@ namespace SaudeIntegrada.Api.Controllers
     {
         private readonly IFichaService _FichaService;
 
-        public FichaController(FichaService FichaService)
+        public FichaController(IFichaService FichaService)
         {
             _FichaService = FichaService;
         }

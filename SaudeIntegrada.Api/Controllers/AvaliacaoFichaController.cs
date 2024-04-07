@@ -11,14 +11,14 @@ namespace SaudeIntegrada.Api.Controllers
     {
         private readonly IAvaliacaoFichaService _AvaliacaoFichaService;
 
-        public AvaliacaoFichaController(AvaliacaoFichaService AvaliacaoFichaService)
+        public AvaliacaoFichaController(IAvaliacaoFichaService AvaliacaoFichaService)
         {
             _AvaliacaoFichaService = AvaliacaoFichaService;
         }
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar([FromBody] AvaliacaoFichaDto dto)
+        public IActionResult Criar(AvaliacaoFichaDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();

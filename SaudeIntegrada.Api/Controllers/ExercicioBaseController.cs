@@ -11,7 +11,7 @@ namespace SaudeIntegrada.Api.Controllers
     {
         private readonly IExercicioBaseService _ExercicioBaseService;
 
-        public ExercicioBaseController(ExercicioBaseService ExercicioBaseService)
+        public ExercicioBaseController(IExercicioBaseService ExercicioBaseService)
         {
             _ExercicioBaseService = ExercicioBaseService;
         }

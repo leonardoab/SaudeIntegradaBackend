@@ -11,7 +11,7 @@ namespace SaudeIntegrada.Api.Controllers
     {
         private readonly IPessoaService _PessoaService;
 
-        public PessoaController(PessoaService PessoaService)
+        public PessoaController(IPessoaService PessoaService)
         {
             _PessoaService = PessoaService;
         }

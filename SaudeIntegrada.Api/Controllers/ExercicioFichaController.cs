@@ -11,7 +11,7 @@ namespace SaudeIntegrada.Api.Controllers
     {
         private readonly IExercicioFichaService _ExercicioFichaService;
 
-        public ExercicioFichaController(ExercicioFichaService ExercicioFichaService)
+        public ExercicioFichaController(IExercicioFichaService ExercicioFichaService)
         {
             _ExercicioFichaService = ExercicioFichaService;
         }

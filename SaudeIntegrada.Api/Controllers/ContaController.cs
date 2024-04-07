@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
-using SaudeIntegrada.Application.Service;
 
 namespace SaudeIntegrada.Api.Controllers
 {
@@ -9,21 +8,21 @@ namespace SaudeIntegrada.Api.Controllers
     [ApiController]
     public class ContaController : ControllerBase
     {
-        private readonly IContaService _ContaService;
+        private readonly IContaService _contaService;
 
-        public ContaController(ContaService ContaService)
+        public ContaController(IContaService contaService)
         {
-            _ContaService = ContaService;
+            _contaService = contaService;
         }
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar([FromBody] ContaDto dto)
+        public IActionResult Criar(ContaDto dto)
         {
-            if (ModelState is { IsValid: false })
+            if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = this._ContaService.Criar(dto);
+            var result = _contaService.Criar(dto);
 
             return Created($"/Conta/{result.Id}", result);
         }
@@ -32,10 +31,10 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("Editar")]
         public IActionResult Editar([FromBody] ContaDto dto)
         {
-            if (ModelState is { IsValid: false })
+            if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = this._ContaService.Editar(dto);
+            var result = _contaService.Editar(dto);
 
             return Created($"/Conta/{result.Id}", result);
         }
@@ -44,10 +43,10 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("Apagar")]
         public IActionResult Apagar([FromBody] ContaDto dto)
         {
-            if (ModelState is { IsValid: false })
+            if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = this._ContaService.Apagar(dto);
+            _contaService.Apagar(dto);
 
             return Ok();
         }
@@ -56,7 +55,7 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("ListaTodos")]
         public IActionResult ListaTodos()
         {
-            var result = this._ContaService.ObterTodos();
+            var result = _contaService.ObterTodos();
 
             return Ok(result);
         }
@@ -65,7 +64,7 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("ContasPorId")]
         public IActionResult GetContasPorId(Guid id)
         {
-            var result = this._ContaService.Obter(id);
+            var result = _contaService.Obter(id);
 
             if (result == null)
             {
@@ -79,7 +78,7 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("BuscarPorTelefone")]
         public IActionResult BuscarPorTelefone(string telefone)
         {
-            var result = this._ContaService.BuscarPorTelefone(telefone);
+            var result = _contaService.BuscarPorTelefone(telefone);
 
             return Ok(result);
         }
@@ -88,13 +87,9 @@ namespace SaudeIntegrada.Api.Controllers
         [Route("BuscarPorEmail")]
         public IActionResult BuscarPorEmail(string email)
         {
-            var result = this._ContaService.BuscarPorEmail(email);
+            var result = _contaService.BuscarPorEmail(email);
 
             return Ok(result);
         }
-
-
-
-
     }
 }

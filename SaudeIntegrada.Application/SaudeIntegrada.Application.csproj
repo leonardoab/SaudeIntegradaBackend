@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Handler\" />
-    <Folder Include="Profile\" />
   </ItemGroup>
 
   <ItemGroup>
