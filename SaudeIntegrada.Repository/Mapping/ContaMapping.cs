@@ -22,11 +22,14 @@ namespace SaudeIntegrada.Repository.Mapping
             builder.Property(x => x.Apelido).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Password).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Ativo);
+            builder.Property(x => x.Telefone).IsRequired().HasMaxLength(200);
 
 
             builder.HasOne(x => x.Pessoa)
-                   .WithOne(p => p.Conta); // Definindo Pessoa como o lado dependente
-                   
+                   .WithOne(p => p.Conta)
+                   .HasForeignKey<Conta>(x => x.PessoaId); // Especificando a chave estrangeira
+
+
 
 
         }

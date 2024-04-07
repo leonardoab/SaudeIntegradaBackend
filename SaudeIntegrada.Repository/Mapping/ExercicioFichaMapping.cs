@@ -18,6 +18,7 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Sets).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Repeticoes).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Observacoes).IsRequired().HasMaxLength(200);
 
             builder.HasOne(x => x.ExercicioBase).WithMany();
         }

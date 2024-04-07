@@ -9,8 +9,8 @@ namespace SaudeIntegrada.Domain.Domains
 {
     public class Pessoa : Entity<Guid>
     {
-        public string Nome { get; set; }        
-        public string Telefone { get; set; }
+        public string Nome { get; set; }
+        public string Sexo { get; set; }
         public DateTime DataNascimento { get; set; }
 
         public Conta Conta { get; set; }

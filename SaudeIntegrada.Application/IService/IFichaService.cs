@@ -18,5 +18,7 @@ namespace SaudeIntegrada.Application.IService
         FichaDto Obter(Guid id);
 
         IEnumerable<FichaDto> ObterTodos();
+
+        IEnumerable<FichaDto> BuscarPorParteNome(string partenome);
     }
 }

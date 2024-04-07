@@ -74,6 +74,7 @@ namespace SaudeIntegrada.Api.Controllers
             return Ok(result);
         }
 
+        
 
 
 

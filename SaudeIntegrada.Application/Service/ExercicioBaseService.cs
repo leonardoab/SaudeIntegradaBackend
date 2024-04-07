@@ -58,5 +58,14 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<IEnumerable<ExercicioBaseDto>>(exercicioBase);
         }
 
+
+        public IEnumerable<ExercicioBaseDto> BuscarPorParteNome(string partenome)
+        {
+            var listaExerciciosBase = ExercicioBaseRepository.Find(x => x.Nome.Contains(partenome)).ToList();
+
+            return (IEnumerable<ExercicioBaseDto>)listaExerciciosBase;
+
+        }
+
     }
 }

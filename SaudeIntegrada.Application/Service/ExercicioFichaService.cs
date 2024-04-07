@@ -3,6 +3,7 @@ using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
 using SaudeIntegrada.Domain.Domains;
 using SaudeIntegrada.Domain.IRepository;
+using SaudeIntegrada.Repository.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,8 @@ namespace SaudeIntegrada.Application.Service
             var exercicioFicha = this.ExercicioFichaRepository.GetAll();
             return this.mapper.Map<IEnumerable<ExercicioFichaDto>>(exercicioFicha);
         }
+
+        
 
     }
 }

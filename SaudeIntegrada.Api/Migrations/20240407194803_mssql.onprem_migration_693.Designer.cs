@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaudeIntegrada.Repository.Context;
 
@@ -11,9 +12,11 @@ using SaudeIntegrada.Repository.Context;
 namespace SaudeIntegrada.Api.Migrations
 {
     [DbContext(typeof(SaudeIntegradaContext))]
-    partial class SaudeIntegradaContextModelSnapshot : ModelSnapshot
+    [Migration("20240407194803_mssql.onprem_migration_693")]
+    partial class mssqlonpremmigration693
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,11 +112,6 @@ namespace SaudeIntegrada.Api.Migrations
                     b.Property<Guid>("PessoaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PessoaId")
@@ -204,7 +202,7 @@ namespace SaudeIntegrada.Api.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("Sexo")
+                    b.Property<string>("Telefone")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");

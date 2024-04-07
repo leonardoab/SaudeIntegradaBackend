@@ -76,6 +76,16 @@ namespace SaudeIntegrada.Api.Controllers
         }
 
 
+        [HttpGet]
+        [Route("BuscarPorParteNome")]
+        public IActionResult BuscarPorParteNome(string partenome)
+        {
+            var result = this._FichaService.BuscarPorParteNome(partenome);
+
+            return Ok(result);
+        }
+
+
 
 
     }

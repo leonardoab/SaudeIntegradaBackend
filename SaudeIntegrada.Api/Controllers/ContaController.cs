@@ -75,6 +75,24 @@ namespace SaudeIntegrada.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("BuscarPorTelefone")]
+        public IActionResult BuscarPorTelefone(string telefone)
+        {
+            var result = this._ContaService.BuscarPorTelefone(telefone);
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("BuscarPorEmail")]
+        public IActionResult BuscarPorEmail(string email)
+        {
+            var result = this._ContaService.BuscarPorEmail(email);
+
+            return Ok(result);
+        }
+
 
 
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SaudeIntegrada.Repository.Repository;
 
 namespace SaudeIntegrada.Application.Service
 {
@@ -56,6 +57,14 @@ namespace SaudeIntegrada.Application.Service
         {
             var ficha = this.FichaRepository.GetAll();
             return this.mapper.Map<IEnumerable<FichaDto>>(ficha);
+        }
+
+        public IEnumerable<FichaDto> BuscarPorParteNome(string partenome)
+        {
+            var listaFichas = FichaRepository.Find(x => x.Nome.Contains(partenome)).ToList();
+
+            return (IEnumerable<FichaDto>)listaFichas;
+
         }
 
 

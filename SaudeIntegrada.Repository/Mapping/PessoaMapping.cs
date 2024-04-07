@@ -19,7 +19,7 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(200);
            
-            builder.Property(x => x.Telefone).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Sexo).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DataNascimento).IsRequired();
 
             builder.HasMany(p => p.AvaliacaoFichas)

@@ -12,6 +12,6 @@ namespace SaudeIntegrada.Application.Dto
         public string Apelido { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public bool Ativo { get; set; }
+        public string Telefone { get; set; }
     }
 }

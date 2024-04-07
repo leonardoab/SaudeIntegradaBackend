@@ -11,5 +11,6 @@ namespace SaudeIntegrada.Application.Dto
         public Guid Id { get; set; }
         public string Sets { get; set; } //4 series
         public string Repeticoes { get; set; } // 8 a 10 repeticoes
+        public string Observacoes { get; set; }
     }
 }
