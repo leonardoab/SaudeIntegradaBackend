@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaudeIntegrada.Api\SaudeIntegrada.Api.csproj" />
+    <ProjectReference Include="..\SaudeIntegrada.Application\SaudeIntegrada.Application.csproj" />
+    <ProjectReference Include="..\SaudeIntegrada.Domain\SaudeIntegrada.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
