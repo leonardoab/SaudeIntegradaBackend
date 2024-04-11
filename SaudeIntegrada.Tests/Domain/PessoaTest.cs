@@ -9,13 +9,13 @@ using SaudeIntegrada.Repository.Context;
 namespace SaudeIntegrada.Tests.Domain
 {
     [Collection("Pessoa collection")]
-    public class PessoaTest : IClassFixture<Fixture>
+    public class PessoaTest : IClassFixture<DependencyInjection>
     {
         private readonly IPessoaService _PessoaService;
 
-        public PessoaTest(Fixture fixture)
+        public PessoaTest(DependencyInjection dependencyInjection)
         {
-            _PessoaService = fixture.ServiceProvider.GetRequiredService<IPessoaService>();
+            _PessoaService = dependencyInjection.ServiceProvider.GetRequiredService<IPessoaService>();
         }
 
         private DbContextOptions<SaudeIntegradaContext> options;
@@ -40,21 +40,14 @@ namespace SaudeIntegrada.Tests.Domain
         }
 
         [Fact]
-        public void NaoDeveCriarDuplicado()
+        public void NaoDeveCriarSemRequest()
         {
-            PessoaDto pessoa = new PessoaDto()
-            {
-                Id = new Guid("96dde085-f7d2-4997-24cc-08dc58fbaf86"),
-                Nome = "João",
-                DataNascimento = DateTime.Now,
-                Sexo = "M",
-                Telefone = "21 98559-9988",
-            };
+            PessoaDto pessoa = new PessoaDto();
 
             var controller = new PessoaController(_PessoaService);
             var result = controller.Criar(pessoa);
 
-            Assert.True(result is CreatedResult);
+            Assert.True(result is BadRequestResult);
         }
 
 

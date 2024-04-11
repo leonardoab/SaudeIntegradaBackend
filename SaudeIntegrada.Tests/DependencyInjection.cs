@@ -10,9 +10,9 @@ using SaudeIntegrada.Repository.Repository;
 
 namespace SaudeIntegrada.Tests
 {
-    public class Fixture
+    public class DependencyInjection
     {
-        public Fixture() {
+        public DependencyInjection() {
 
             var program = new Program();
 
@@ -20,7 +20,7 @@ namespace SaudeIntegrada.Tests
 
             //var connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase";
             
-            serviceColletion.AddDbContextFactory<SaudeIntegradaContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase", b => b.MigrationsAssembly("SaudeIntegrada.Api")));
+            serviceColletion.AddDbContext<SaudeIntegradaContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase", b => b.MigrationsAssembly("SaudeIntegrada.Api")));
             
             serviceColletion.AddAutoMapper(typeof(PessoaProfile).Assembly);
 
