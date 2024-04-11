@@ -22,11 +22,32 @@ namespace SaudeIntegrada.Tests
             
             serviceColletion.AddDbContext<SaudeIntegradaContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase", b => b.MigrationsAssembly("SaudeIntegrada.Api")));
             
+            serviceColletion.AddAutoMapper(typeof(AvaliacaoFichaProfile).Assembly);
+            serviceColletion.AddAutoMapper(typeof(ContaProfile).Assembly);
+            serviceColletion.AddAutoMapper(typeof(ExercicioBaseProfile).Assembly);
+            serviceColletion.AddAutoMapper(typeof(ExercicioFichaProfile).Assembly);
+            serviceColletion.AddAutoMapper(typeof(FichaProfile).Assembly);
             serviceColletion.AddAutoMapper(typeof(PessoaProfile).Assembly);
 
             serviceColletion.AddTransient<DbContext, SaudeIntegradaContext>();
+            
+            //Services
+            serviceColletion.AddTransient<IAvaliacaoFichaService, AvaliacaoFichaService>();
+            serviceColletion.AddTransient<IContaService, ContaService>();
+            serviceColletion.AddTransient<IExercicioBaseService, ExercicioBaseService>();
+            serviceColletion.AddTransient<IExercicioFichaService, ExercicioFichaService>();
+            serviceColletion.AddTransient<IFichaService, FichaService>();
             serviceColletion.AddTransient<IPessoaService, PessoaService>();
+
+
+            //Repositories
+            serviceColletion.AddTransient<IAvaliacaoFichaRepository, AvaliacaoFichaRepository>();
+            serviceColletion.AddTransient<IContaRepository, ContaRepository>();
+            serviceColletion.AddTransient<IExercicioBaseRepository, ExercicioBaseRepository>();
+            serviceColletion.AddTransient<IExercicioFichaRepository, ExercicioFichaRepository>();
+            serviceColletion.AddTransient<IFichaRepository, FichaRepository>();
             serviceColletion.AddTransient<IPessoaRepository, PessoaRepository>();
+            
             //serviceColletion.AddTransient<IMapper, Mapper>();
 
             ServiceProvider = serviceColletion.BuildServiceProvider();

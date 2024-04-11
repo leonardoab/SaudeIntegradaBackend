@@ -18,9 +18,6 @@ namespace SaudeIntegrada.Tests.Domain
             _PessoaService = dependencyInjection.ServiceProvider.GetRequiredService<IPessoaService>();
         }
 
-        private DbContextOptions<SaudeIntegradaContext> options;
-
-
         [Fact]
         public async Task DeveCriarPessoaComSucesso()
         {
