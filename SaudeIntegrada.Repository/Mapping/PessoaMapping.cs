@@ -27,7 +27,7 @@ namespace SaudeIntegrada.Domain
 
 
             builder.HasOne(x => x.Conta)
-                   .WithOne(p => p.Pessoa)
+                   .WithOne()
                    .HasForeignKey<Pessoa>(x => x.ContaId);  // Especificando a chave estrangeira
 
         }

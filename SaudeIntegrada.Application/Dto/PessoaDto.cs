@@ -7,13 +7,11 @@ namespace SaudeIntegrada.Application.Dto
         [Required]
         public Guid Id { get; set; }
         [Required]
-        public string Nome { get; set; }
-        [Required]
-        public string Telefone { get; set; }
+        public string Nome { get; set; }       
         [Required]
         public string Sexo { get; set; }
         [Required]
-        public Guid IdConta { get; set; }
+        public Guid ContaId { get; set; }
         [Required]
         public DateTime DataNascimento { get; set; }
     }
@@ -22,13 +20,11 @@ namespace SaudeIntegrada.Application.Dto
     {
         
         [Required]
-        public string Nome { get; set; }
-        [Required]
-        public string Telefone { get; set; }
+        public string Nome { get; set; }        
         [Required]
         public string Sexo { get; set; }
         [Required]
-        public Guid IdConta { get; set; }
+        public Guid ContaId { get; set; }
         [Required]
         public DateTime DataNascimento { get; set; }
     }

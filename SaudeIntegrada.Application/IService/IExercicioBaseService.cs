@@ -19,6 +19,6 @@ namespace SaudeIntegrada.Application.IService
 
         IEnumerable<ExercicioBaseDto> ObterTodos();
 
-        IEnumerable<ExercicioBaseDto> BuscarPorParteNome(string partenome);
+        List<ExercicioBaseDto> BuscarPorParteNome(string partenome);
     }
 }

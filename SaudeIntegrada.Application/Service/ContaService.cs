@@ -14,8 +14,8 @@ namespace SaudeIntegrada.Application.Service
 {
     public class ContaService : IContaService
     {
-        private readonly IContaRepository ContaRepository;
-        private readonly IMapper mapper;
+        private  IContaRepository ContaRepository;
+        private  IMapper mapper;
 
         public ContaService(IContaRepository ContaRepository, IMapper mapper)
         {

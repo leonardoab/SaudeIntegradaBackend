@@ -9,7 +9,7 @@ namespace SaudeIntegrada.Domain.Domains
 {
     public class Conta : Entity<Guid>
     {
-        public Pessoa Pessoa { get; set; }
+        
 
         public string Apelido { get; set; }
         public string Password { get; set; }
