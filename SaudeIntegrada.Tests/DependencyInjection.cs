@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using SaudeIntegrada.Application.IService;
@@ -30,7 +31,7 @@ namespace SaudeIntegrada.Tests
             serviceColletion.AddAutoMapper(typeof(PessoaProfile).Assembly);
 
             serviceColletion.AddTransient<DbContext, SaudeIntegradaContext>();
-            
+            serviceColletion.AddTransient<SaudeIntegradaContext>();
             //Services
             serviceColletion.AddTransient<IAvaliacaoFichaService, AvaliacaoFichaService>();
             serviceColletion.AddTransient<IContaService, ContaService>();
