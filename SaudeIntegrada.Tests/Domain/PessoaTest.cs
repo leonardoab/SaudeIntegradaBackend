@@ -10,7 +10,6 @@ namespace SaudeIntegrada.Tests.Domain
     public class PessoaTest : IClassFixture<DependencyInjection>
     {
         private readonly IPessoaService _PessoaService;
-        private readonly IContaService _ContaService;
 
         public PessoaTest(DependencyInjection dependencyInjection)
         {
