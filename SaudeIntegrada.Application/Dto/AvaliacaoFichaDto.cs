@@ -18,6 +18,7 @@ namespace SaudeIntegrada.Application.Dto
         public string Duracao { get; set; }
         public string Observacoes { get; set; }
         public string ZonaQueima { get; set; }
+        public string Objetivo { get; set; }
     }
 }
 

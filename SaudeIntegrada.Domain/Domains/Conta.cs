@@ -17,7 +17,7 @@ namespace SaudeIntegrada.Domain.Domains
         public bool Ativo {  get; set; }
         public string Telefone { get; set; }
 
-        public Guid PessoaId { get; set; } // Chave estrangeira
+        
 
 
     }

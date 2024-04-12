@@ -1,26 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using System.Data;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace SaudeIntegrada.Repository.IRepositorys
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class, new()
     {
-        Task Delete(T entity);
-
-        Task<T> Get(object id);
-
-        Task Save(T entity);
-
-        Task Update(T entity);
-
-        IEnumerable<T> GetAll();
-
-        T GetById(Guid id);
-
-        IEnumerable<T> Find(Expression<Func<T, bool>> expression);
-
+        void Delete(T entity);
         bool Exists(Expression<Func<T, bool>> expression);
-      
+        IEnumerable<T> Find(Expression<Func<T, bool>> expression);
+        IEnumerable<T> GetAll();
+        T GetById(Guid id);
+        void Save(T entity);
+        void Update(T entity);
     }
 }

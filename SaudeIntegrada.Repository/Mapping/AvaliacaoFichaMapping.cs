@@ -25,11 +25,12 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.DataCriacao).IsRequired();
             builder.Property(x => x.Observacoes).IsRequired().HasMaxLength(200);
             builder.Property(x => x.ZonaQueima).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Metodo).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Metodo).IsRequired().HasMaxLength(200);            
             builder.Property(x => x.Nivel).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Objetivo).IsRequired().HasMaxLength(200);
 
-            
-            
+
+
         }
     }
 }

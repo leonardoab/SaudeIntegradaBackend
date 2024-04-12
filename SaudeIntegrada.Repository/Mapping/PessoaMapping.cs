@@ -23,10 +23,12 @@ namespace SaudeIntegrada.Domain
             builder.Property(x => x.DataNascimento).IsRequired();
 
             builder.HasMany(p => p.AvaliacaoFichas)
-                   .WithOne(a => a.Pessoa);  // Definindo a entidade pai (Pessoa) //builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
+                   .WithOne(a => a.Pessoa);   // Definindo a entidade pai (Pessoa) //builder.HasMany(x => x.AvaliacaoFichas).WithOne().OnDelete(DeleteBehavior.Cascade);
 
 
-
+            builder.HasOne(x => x.Conta)
+                   .WithOne(p => p.Pessoa)
+                   .HasForeignKey<Pessoa>(x => x.ContaId);  // Especificando a chave estrangeira
 
         }
     }

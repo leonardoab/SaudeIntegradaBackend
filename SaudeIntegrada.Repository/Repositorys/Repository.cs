@@ -1,61 +1,45 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using SaudeIntegrada.Repository.Context;
+﻿using SaudeIntegrada.Repository.Context;
 using SaudeIntegrada.Repository.IRepositorys;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaudeIntegrada.Repository.Repositorys
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class, new()
     {
-        protected DbSet<T> Query { get; set; }
-        protected DbContext Context { get; set; }
+        private SaudeIntegradaContext Context { get; set; }
 
-        public Repository(SaudeIntegradaContext context)
+        public Repository(SaudeIntegradaContext Context)
         {
-            Context = context;
-            Query = Context.Set<T>();
+            this.Context = Context;
         }
 
-        public async Task Save(T entity)
+        public void Save(T entity)
         {
-            await Query.AddAsync(entity);
-            await Context.SaveChangesAsync();
+            Context.Add(entity);
+            Context.SaveChanges();
         }
 
-        public async Task Update(T entity)
+        public void Update(T entity)
         {
-            Query.Update(entity);
-            await Context.SaveChangesAsync();
+            Context.Update(entity);
+            Context.SaveChanges();
+        }
+        public void Delete(T entity)
+        {
+            Context.Remove(entity);
+            Context.SaveChanges();
         }
 
-        public async Task Delete(T entity)
+        public IEnumerable<T> GetAll()
         {
-            Query.Remove(entity);
-            await Context.SaveChangesAsync();
-        }
-
-        public async Task<T> Get(object id)
-        {
-            return await Query.FindAsync(id);
+            return Context.Set<T>().ToList();
         }
 
         public T GetById(Guid id)
         {
             return Context.Set<T>().Find(id);
         }
-
-        public IEnumerable<T> GetAll()
-        {
-            return Context.Set<T>().ToList();
-        }        
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
@@ -66,5 +50,9 @@ namespace SaudeIntegrada.Repository.Repositorys
         {
             return Find(expression).Any();
         }
+
+
+
+
     }
 }

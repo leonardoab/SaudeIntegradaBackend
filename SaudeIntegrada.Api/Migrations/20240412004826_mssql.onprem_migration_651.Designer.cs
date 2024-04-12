@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaudeIntegrada.Repository.Context;
 
@@ -11,9 +12,11 @@ using SaudeIntegrada.Repository.Context;
 namespace SaudeIntegrada.Api.Migrations
 {
     [DbContext(typeof(SaudeIntegradaContext))]
-    partial class SaudeIntegradaContextModelSnapshot : ModelSnapshot
+    [Migration("20240412004826_mssql.onprem_migration_651")]
+    partial class mssqlonpremmigration651
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,9 +236,7 @@ namespace SaudeIntegrada.Api.Migrations
                 {
                     b.HasOne("SaudeIntegrada.Domain.Domains.Pessoa", "Pessoa")
                         .WithMany("AvaliacaoFichas")
-                        .HasForeignKey("PessoaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PessoaId");
 
                     b.Navigation("Pessoa");
                 });
@@ -244,9 +245,7 @@ namespace SaudeIntegrada.Api.Migrations
                 {
                     b.HasOne("SaudeIntegrada.Domain.Domains.ExercicioBase", "ExercicioBase")
                         .WithMany()
-                        .HasForeignKey("ExercicioBaseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ExercicioBaseId");
 
                     b.HasOne("SaudeIntegrada.Domain.Domains.Ficha", null)
                         .WithMany("ExerciciosFicha")
@@ -267,9 +266,7 @@ namespace SaudeIntegrada.Api.Migrations
                 {
                     b.HasOne("SaudeIntegrada.Domain.Domains.Conta", "Conta")
                         .WithOne("Pessoa")
-                        .HasForeignKey("SaudeIntegrada.Domain.Domains.Pessoa", "ContaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SaudeIntegrada.Domain.Domains.Pessoa", "ContaId");
 
                     b.Navigation("Conta");
                 });

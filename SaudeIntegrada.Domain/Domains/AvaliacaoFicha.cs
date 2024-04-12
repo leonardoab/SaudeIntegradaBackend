@@ -19,7 +19,8 @@ namespace SaudeIntegrada.Domain.Domains
         public string Descanso { get; set; } 
         public string Duracao { get; set; }     
         public string Observacoes { get; set; }
-        public string ZonaQueima { get; set; }   
+        public string ZonaQueima { get; set; }
+        public string Objetivo {  get; set; }
         
         public Pessoa Pessoa { get; set; }
         public virtual IList<Ficha> Fichas { get; set; } 

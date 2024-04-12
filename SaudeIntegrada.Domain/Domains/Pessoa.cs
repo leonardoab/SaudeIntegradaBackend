@@ -14,6 +14,7 @@ namespace SaudeIntegrada.Domain.Domains
         public DateTime DataNascimento { get; set; }
 
         public Conta Conta { get; set; }
+        public Guid ContaId { get; set; } // Chave estrangeira
 
         public virtual IList<AvaliacaoFicha> AvaliacaoFichas { get; set; }
 
