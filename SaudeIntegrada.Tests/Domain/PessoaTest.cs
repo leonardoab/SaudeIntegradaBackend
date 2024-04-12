@@ -10,6 +10,7 @@ namespace SaudeIntegrada.Tests.Domain
     public class PessoaTest : IClassFixture<DependencyInjection>
     {
         private readonly IPessoaService _PessoaService;
+        private readonly IContaService _ContaService;
 
         public PessoaTest(DependencyInjection dependencyInjection)
         {
@@ -36,8 +37,8 @@ namespace SaudeIntegrada.Tests.Domain
                 Nome = $"Pessoa {utils.RandomString(6)}",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                Telefone = utils.RandomNumber(10),
-                IdConta = objConta.Id
+                //Telefone = utils.RandomNumber(10),
+                //IdConta = objConta.Id
             };
 
             var result = _PessoaService.Criar(pessoa);
@@ -58,7 +59,7 @@ namespace SaudeIntegrada.Tests.Domain
                 Nome = "Teste Editar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                Telefone = "21988665544"
+                //Telefone = "21988665544"
             };
 
             var result = _PessoaService.Editar(pessoa);
@@ -79,7 +80,7 @@ namespace SaudeIntegrada.Tests.Domain
                 Nome = "Teste Apagar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                Telefone = "21988665544"
+                //Telefone = "21988665544"
             };
 
             var resultCriar = _PessoaService.Criar(pessoa);
