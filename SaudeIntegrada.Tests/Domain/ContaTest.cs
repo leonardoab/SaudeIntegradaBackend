@@ -22,11 +22,11 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public async Task DeveCriarContaComSucesso()
         {
-            var conta = new ContaDto()
+            var conta = new ContaCriarDto()
             {
-                Email = "teste@teste.com",
+                Email = "teste_conta@teste.com",
                 Password = "123456",
-                Apelido = "teste",
+                Apelido = "teste_conta",
                 Telefone = "21958922465"
             };
 
@@ -37,7 +37,7 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public async Task DeveEditar()
         {
-            ContaDto conta = new ContaDto()
+            var conta = new ContaCriarDto()
             {
                 Email = "teste2@teste.com",
                 Password = "123456",
@@ -57,7 +57,7 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public async Task DeveApagar()
         {
-            ContaDto conta = new ContaDto()
+            var conta = new ContaCriarDto()
             {
                 Email = "teste3@teste.com",
                 Password = "123456",
@@ -65,7 +65,8 @@ namespace SaudeIntegrada.Tests.Domain
                 Telefone = "21958566654",
             };
 
-            var result = _ContaService.Apagar(_ContaService.Criar(conta));
+            var contaCriada = _ContaService.Criar(conta);
+            var result = _ContaService.Apagar(contaCriada.Id);
             Assert.True(result is not null);
         }
 
