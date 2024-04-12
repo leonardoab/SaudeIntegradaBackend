@@ -37,6 +37,8 @@ namespace SaudeIntegrada.Api.Controllers
 
             var result = this._AvaliacaoFichaService.Editar(dto);
 
+            result.IdPessoa = dto.IdPessoa;
+
             return Ok(result);
         }
 

@@ -15,19 +15,30 @@ namespace SaudeIntegrada.Application.Service
     {
         private readonly IAvaliacaoFichaRepository AvaliacaoFichaRepository;
         private readonly IMapper mapper;
+        private readonly IPessoaRepository PessoaRepository;
 
-        public AvaliacaoFichaService(IAvaliacaoFichaRepository AvaliacaoFichaRepository, IMapper mapper)
+        public AvaliacaoFichaService(IAvaliacaoFichaRepository AvaliacaoFichaRepository, IMapper mapper, IPessoaRepository PessoaRepository)
         {
             this.AvaliacaoFichaRepository = AvaliacaoFichaRepository;
             this.mapper = mapper;
+            this.PessoaRepository = PessoaRepository;
         }
 
         public AvaliacaoFichaDto Criar(AvaliacaoFichaCriarDto dto)
         {
             AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+
+            Pessoa pessoa = PessoaRepository.GetById(dto.IdPessoa);
+
+            avaliacaoFicha.Pessoa = pessoa;
+
             this.AvaliacaoFichaRepository.Save(avaliacaoFicha);
 
-            return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
+            AvaliacaoFichaDto avaliacaoFichaDto = this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
+
+            avaliacaoFichaDto.IdPessoa = dto.IdPessoa;
+
+            return avaliacaoFichaDto;
         }
 
         public AvaliacaoFichaDto Editar(AvaliacaoFichaDto dto)

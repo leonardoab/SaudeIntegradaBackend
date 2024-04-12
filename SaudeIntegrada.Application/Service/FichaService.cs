@@ -16,16 +16,23 @@ namespace SaudeIntegrada.Application.Service
     {
         private readonly IFichaRepository FichaRepository;
         private readonly IMapper mapper;
+        private readonly IAvaliacaoFichaRepository AvaliacaoFichaRepository;
 
-        public FichaService(IFichaRepository FichaRepository, IMapper mapper)
+        public FichaService(IFichaRepository FichaRepository, IMapper mapper, IAvaliacaoFichaRepository AvaliacaoFichaRepository)
         {
             this.FichaRepository = FichaRepository;
             this.mapper = mapper;
+            this.AvaliacaoFichaRepository = AvaliacaoFichaRepository;
         }
 
         public FichaDto Criar(FichaCriarDto dto)
         {
             Ficha ficha = this.mapper.Map<Ficha>(dto);
+
+            //AvaliacaoFicha avaliacaoFicha = AvaliacaoFichaRepository.GetById(dto.IdAvaliacaoFicha);
+
+            //ficha.ava
+
             this.FichaRepository.Save(ficha);
 
             return this.mapper.Map<FichaDto>(ficha);

@@ -14,6 +14,18 @@ namespace SaudeIntegrada.Application.Profile
         {
             CreateMap<AvaliacaoFichaDto, AvaliacaoFicha>();
             CreateMap<AvaliacaoFicha, AvaliacaoFichaDto>();
+                /*.AfterMap((s, d) =>
+                {
+                    
+
+                    d.IdPessoa = s.Pessoa.Id;
+
+
+
+                });*/
+
+
+
             CreateMap<AvaliacaoFichaCriarDto, AvaliacaoFicha>();
 
         }
