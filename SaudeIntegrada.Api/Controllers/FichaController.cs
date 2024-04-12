@@ -85,7 +85,17 @@ namespace SaudeIntegrada.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("AssociarFichaAvaliacaoFicha")]
+        public IActionResult AssociarFichaAvaliacaoFicha(FichaAvaliacaoFichaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
 
+            var result = this._FichaService.AssociarFichaAvaliacaoFicha(dto);
+
+            return Ok( result);
+        }
 
 
     }

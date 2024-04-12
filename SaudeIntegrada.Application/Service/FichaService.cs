@@ -70,13 +70,49 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<IEnumerable<FichaDto>>(ficha);
         }
 
-        public IEnumerable<FichaDto> BuscarPorParteNome(string partenome)
+        public List<FichaDto> BuscarPorParteNome(string partenome)
         {
             var listaFichas = FichaRepository.Find(x => x.Nome.Contains(partenome)).ToList();
 
-            return (IEnumerable<FichaDto>)listaFichas;
+            return this.mapper.Map<List<FichaDto>>(listaFichas);
+
+            
 
         }
+
+        public bool AssociarFichaAvaliacaoFicha(FichaAvaliacaoFichaDto dto) {
+
+            Ficha ficha = FichaRepository.GetById(dto.FichaId);
+
+            AvaliacaoFicha avaliacaoFicha = AvaliacaoFichaRepository.GetById(dto.AvaliacaoFichaId);
+
+            if (ficha != null && avaliacaoFicha != null) {
+
+                if (avaliacaoFicha.Fichas == null) {
+
+                    avaliacaoFicha.Fichas = new List<Ficha>();
+
+                }
+
+                avaliacaoFicha.Fichas.Add(ficha);
+
+                AvaliacaoFichaRepository.Update(avaliacaoFicha);
+
+                return true;
+
+
+            } else {
+
+                return false;
+
+            }
+
+
+           
+        
+        }
+
+       
 
 
     }

@@ -18,5 +18,7 @@ namespace SaudeIntegrada.Application.IService
         ExercicioFichaDto Obter(Guid id);
 
         IEnumerable<ExercicioFichaDto> ObterTodos();
+
+        bool AssociarFichaExercicioFicha(FichaExercicioFichaDto dto);
     }
 }

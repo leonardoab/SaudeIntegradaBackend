@@ -25,6 +25,8 @@ namespace SaudeIntegrada.Api.Controllers
 
             var result = this._ExercicioFichaService.Criar(dto);
 
+            result.IdExercicioBase = dto.IdExercicioBase;
+
             return Created($"/ExercicioFicha/{result.Id}", result);
         }
 
@@ -71,6 +73,19 @@ namespace SaudeIntegrada.Api.Controllers
             {
                 return NotFound();
             }
+
+            return Ok(result);
+        }
+
+
+        [HttpPost]
+        [Route("AssociarFichaExercicioFicha")]
+        public IActionResult AssociarFichaExercicioFicha(FichaExercicioFichaDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+
+            var result = this._ExercicioFichaService.AssociarFichaExercicioFicha(dto);
 
             return Ok(result);
         }

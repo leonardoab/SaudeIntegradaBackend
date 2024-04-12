@@ -17,5 +17,14 @@ namespace SaudeIntegrada.Application.Dto
         public string Nome { get; set; }
         
     }
+
+    public class FichaAvaliacaoFichaDto
+    {
+        [Required]
+        public Guid FichaId { get; set; }
+        [Required]
+        public Guid AvaliacaoFichaId { get; set; }
+
+    }
 }
 

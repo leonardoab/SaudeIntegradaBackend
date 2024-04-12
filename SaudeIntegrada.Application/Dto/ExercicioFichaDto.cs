@@ -21,8 +21,7 @@ namespace SaudeIntegrada.Application.Dto
         public string Carga { get; set; }
         [Required]
         public Guid IdExercicioBase { get; set; }
-        [Required]
-        public Guid IdFicha { get; set; }
+        
     }
 
     public class ExercicioFichaCriarDto
@@ -38,7 +37,15 @@ namespace SaudeIntegrada.Application.Dto
         public string Carga { get; set; }
         [Required]
         public Guid IdExercicioBase { get; set; }
+        
+    }
+
+    public class FichaExercicioFichaDto
+    {
         [Required]
-        public Guid IdFicha { get; set; }
+        public Guid FichaId { get; set; }
+        [Required]
+        public Guid ExercicioFichaId { get; set; }
+
     }
 }

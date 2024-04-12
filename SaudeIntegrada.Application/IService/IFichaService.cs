@@ -19,6 +19,9 @@ namespace SaudeIntegrada.Application.IService
 
         IEnumerable<FichaDto> ObterTodos();
 
-        IEnumerable<FichaDto> BuscarPorParteNome(string partenome);
+        List<FichaDto> BuscarPorParteNome(string partenome);
+
+        bool AssociarFichaAvaliacaoFicha(FichaAvaliacaoFichaDto dto);
     }
+        
 }

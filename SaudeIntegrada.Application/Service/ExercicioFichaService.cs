@@ -16,16 +16,25 @@ namespace SaudeIntegrada.Application.Service
     {
         private readonly IExercicioFichaRepository ExercicioFichaRepository;
         private readonly IMapper mapper;
+        private readonly IFichaRepository FichaRepository;
+        private readonly IExercicioBaseRepository ExercicioBaseRepository;
 
-        public ExercicioFichaService(IExercicioFichaRepository ExercicioFichaRepository, IMapper mapper)
+        public ExercicioFichaService(IExercicioFichaRepository ExercicioFichaRepository, IMapper mapper, IFichaRepository FichaRepository, IExercicioBaseRepository ExercicioBaseRepository)
         {
             this.ExercicioFichaRepository = ExercicioFichaRepository;
             this.mapper = mapper;
+            this.FichaRepository = FichaRepository;
+            this.ExercicioBaseRepository = ExercicioBaseRepository;
         }
 
         public ExercicioFichaDto Criar(ExercicioFichaCriarDto dto)
         {
             ExercicioFicha exercicioFicha = this.mapper.Map<ExercicioFicha>(dto);
+
+            ExercicioBase exercicioBase = this.ExercicioBaseRepository.GetById(dto.IdExercicioBase);
+
+            exercicioFicha.ExercicioBase = exercicioBase;
+
             this.ExercicioFichaRepository.Save(exercicioFicha);
 
             return this.mapper.Map<ExercicioFichaDto>(exercicioFicha);
@@ -63,7 +72,44 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<IEnumerable<ExercicioFichaDto>>(exercicioFicha);
         }
 
-        
+        public bool AssociarFichaExercicioFicha(FichaExercicioFichaDto dto)
+        {
+
+            Ficha ficha = FichaRepository.GetById(dto.FichaId);
+
+            ExercicioFicha exercicioFicha = ExercicioFichaRepository.GetById(dto.ExercicioFichaId);
+
+            if (ficha != null && exercicioFicha != null)
+            {
+
+                if (ficha.ExerciciosFicha == null)
+                {
+
+                    ficha.ExerciciosFicha = new List<ExercicioFicha>();
+
+                }
+
+                ficha.ExerciciosFicha.Add(exercicioFicha);
+
+                FichaRepository.Update(ficha);
+
+                return true;
+
+
+            }
+            else
+            {
+
+                return false;
+
+            }
+
+
+
+
+        }
+
+
 
     }
 }
