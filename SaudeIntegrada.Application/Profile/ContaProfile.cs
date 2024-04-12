@@ -14,6 +14,7 @@ namespace SaudeIntegrada.Application.Profile
         {
             CreateMap<ContaDto, Conta>();
             CreateMap<Conta, ContaDto>();
+            CreateMap<ContaCriarDto, Conta>();
 
         }
     }

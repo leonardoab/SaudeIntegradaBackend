@@ -9,11 +9,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IExercicioBaseService
     {
-        ExercicioBaseDto Criar(ExercicioBaseDto dto);
+        ExercicioBaseDto Criar(ExercicioBaseCriarDto dto);
 
         ExercicioBaseDto Editar(ExercicioBaseDto dto);
 
-        ExercicioBaseDto Apagar(ExercicioBaseDto dto);
+        ExercicioBaseDto Apagar(Guid id);
 
         ExercicioBaseDto Obter(Guid id);
 

@@ -9,11 +9,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IContaService
     {
-        ContaDto Criar(ContaDto dto);
+        ContaDto Criar(ContaCriarDto dto);
 
         ContaDto Editar(ContaDto dto);
 
-        ContaDto Apagar(ContaDto dto);
+        ContaDto Apagar(Guid id);
 
         ContaDto Obter(Guid id);
 

@@ -9,11 +9,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IFichaService
     {
-        FichaDto Criar(FichaDto dto);
+        FichaDto Criar(FichaCriarDto dto);
 
         FichaDto Editar(FichaDto dto);
 
-        FichaDto Apagar(FichaDto dto);
+        FichaDto Apagar(Guid id);
 
         FichaDto Obter(Guid id);
 

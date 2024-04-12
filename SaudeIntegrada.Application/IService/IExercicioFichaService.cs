@@ -9,11 +9,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IExercicioFichaService
     {
-        ExercicioFichaDto Criar(ExercicioFichaDto dto);
+        ExercicioFichaDto Criar(ExercicioFichaCriarDto dto);
 
         ExercicioFichaDto Editar(ExercicioFichaDto dto);
 
-        ExercicioFichaDto Apagar(ExercicioFichaDto dto);
+        ExercicioFichaDto Apagar(Guid id);
 
         ExercicioFichaDto Obter(Guid id);
 

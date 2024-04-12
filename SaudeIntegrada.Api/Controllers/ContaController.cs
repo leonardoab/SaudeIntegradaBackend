@@ -17,7 +17,7 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar(ContaDto dto)
+        public IActionResult Criar(ContaCriarDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -41,12 +41,12 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar( ContaDto dto)
+        public IActionResult Apagar( Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _contaService.Apagar(dto);
+            _contaService.Apagar(id);
 
             return Ok();
         }

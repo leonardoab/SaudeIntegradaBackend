@@ -12,11 +12,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IAvaliacaoFichaService
     {
-        AvaliacaoFichaDto Criar(AvaliacaoFichaDto dto);
+        AvaliacaoFichaDto Criar(AvaliacaoFichaCriarDto dto);
 
         AvaliacaoFichaDto Editar(AvaliacaoFichaDto dto);
 
-        AvaliacaoFichaDto Apagar(AvaliacaoFichaDto dto);
+        AvaliacaoFichaDto Apagar(Guid id);
 
         AvaliacaoFichaDto Obter(Guid id);
 

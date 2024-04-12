@@ -23,7 +23,7 @@ namespace SaudeIntegrada.Application.Service
             this.mapper = mapper;
         }
 
-        public ContaDto Criar(ContaDto dto)
+        public ContaDto Criar(ContaCriarDto dto)
         {
             if (this.ContaRepository.Exists(x => x.Email == dto.Email))
                 throw new Exception("Usuario já existente na base");
@@ -49,9 +49,12 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<ContaDto>(conta);
         }
 
-        public ContaDto Apagar(ContaDto dto)
+        public ContaDto Apagar(Guid id)
         {
-            Conta conta = this.mapper.Map<Conta>(dto);
+            Conta conta = this.ContaRepository.GetById(id);
+
+            if (!this.ContaRepository.Exists(x => x.Id == id)) { throw new Exception("Conta nao existe");  }
+
             this.ContaRepository.Delete(conta);
 
             return this.mapper.Map<ContaDto>(conta);

@@ -18,7 +18,7 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpPost]
         [Route("Criar")]
-        public IActionResult Criar(AvaliacaoFichaDto dto)
+        public IActionResult Criar(AvaliacaoFichaCriarDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
@@ -42,12 +42,12 @@ namespace SaudeIntegrada.Api.Controllers
 
         [HttpDelete]
         [Route("Apagar")]
-        public IActionResult Apagar( AvaliacaoFichaDto dto)
+        public IActionResult Apagar(Guid id)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
 
-            var result = this._AvaliacaoFichaService.Apagar(dto);
+            var result = this._AvaliacaoFichaService.Apagar(id);
 
             return Ok();
         }

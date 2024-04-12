@@ -23,7 +23,7 @@ namespace SaudeIntegrada.Application.Service
             this.mapper = mapper;
         }
 
-        public ExercicioFichaDto Criar(ExercicioFichaDto dto)
+        public ExercicioFichaDto Criar(ExercicioFichaCriarDto dto)
         {
             ExercicioFicha exercicioFicha = this.mapper.Map<ExercicioFicha>(dto);
             this.ExercicioFichaRepository.Save(exercicioFicha);
@@ -39,9 +39,13 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<ExercicioFichaDto>(exercicioFicha);
         }
 
-        public ExercicioFichaDto Apagar(ExercicioFichaDto dto)
+        public ExercicioFichaDto Apagar(Guid id)
         {
-            ExercicioFicha exercicioFicha = this.mapper.Map<ExercicioFicha>(dto);
+            ExercicioFicha exercicioFicha = this.ExercicioFichaRepository.GetById(id);
+
+            if (!this.ExercicioFichaRepository.Exists(x => x.Id == id)) { throw new Exception("ExercicioFicha nao existe"); }
+
+            
             this.ExercicioFichaRepository.Delete(exercicioFicha);
 
             return this.mapper.Map<ExercicioFichaDto>(exercicioFicha);

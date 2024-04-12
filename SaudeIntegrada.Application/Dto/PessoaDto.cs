@@ -2,17 +2,35 @@
 using System.ComponentModel.DataAnnotations;
 namespace SaudeIntegrada.Application.Dto
 {
-	public class PessoaDto
-	{
-		public Guid Id { get; set; }
+    public class PessoaDto
+    {
+        [Required]
+        public Guid Id { get; set; }
         [Required]
         public string Nome { get; set; }
         [Required]
         public string Telefone { get; set; }
+        [Required]
         public string Sexo { get; set; }
+        [Required]
+        public Guid IdConta { get; set; }
+        [Required]
+        public DateTime DataNascimento { get; set; }
+    }
 
+    public class PessoaCriarDto
+    {
         
-        public DateTime DataNascimento { get; set; } 
+        [Required]
+        public string Nome { get; set; }
+        [Required]
+        public string Telefone { get; set; }
+        [Required]
+        public string Sexo { get; set; }
+        [Required]
+        public Guid IdConta { get; set; }
+        [Required]
+        public DateTime DataNascimento { get; set; }
     }
 }
 

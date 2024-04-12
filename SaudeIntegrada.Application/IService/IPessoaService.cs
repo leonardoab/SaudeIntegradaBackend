@@ -9,11 +9,11 @@ namespace SaudeIntegrada.Application.IService
 {
     public interface IPessoaService
     {
-        PessoaDto Criar(PessoaDto dto);
+        PessoaDto Criar(PessoaCriarDto dto);
 
         PessoaDto Editar(PessoaDto dto);
 
-        PessoaDto Apagar(PessoaDto dto);
+        PessoaDto Apagar(Guid id);
 
         PessoaDto Obter(Guid id);
 

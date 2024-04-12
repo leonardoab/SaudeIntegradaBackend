@@ -23,7 +23,7 @@ namespace SaudeIntegrada.Application.Service
             this.mapper = mapper;
         }
 
-        public PessoaDto Criar(PessoaDto dto)
+        public PessoaDto Criar(PessoaCriarDto dto)
         {
             Pessoa pessoa = this.mapper.Map<Pessoa>(dto);
             this.PessoaRepository.Save(pessoa);
@@ -39,9 +39,13 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<PessoaDto>(pessoa);
         }
 
-        public PessoaDto Apagar(PessoaDto dto)
+        public PessoaDto Apagar(Guid id)
         {
-            Pessoa pessoa = this.mapper.Map<Pessoa>(dto);
+            Pessoa pessoa = this.PessoaRepository.GetById(id);
+
+            if (!this.PessoaRepository.Exists(x => x.Id == id)) { throw new Exception("Pessoa nao existe"); }
+
+            
             this.PessoaRepository.Delete(pessoa);
 
             return this.mapper.Map<PessoaDto>(pessoa);

@@ -22,7 +22,7 @@ namespace SaudeIntegrada.Application.Service
             this.mapper = mapper;
         }
 
-        public AvaliacaoFichaDto Criar(AvaliacaoFichaDto dto)
+        public AvaliacaoFichaDto Criar(AvaliacaoFichaCriarDto dto)
         {
             AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
             this.AvaliacaoFichaRepository.Save(avaliacaoFicha);
@@ -38,9 +38,12 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
         }
 
-        public AvaliacaoFichaDto Apagar(AvaliacaoFichaDto dto)
+        public AvaliacaoFichaDto Apagar(Guid id)
         {
-            AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            AvaliacaoFicha avaliacaoFicha = this.AvaliacaoFichaRepository.GetById(id);
+
+            if (!this.AvaliacaoFichaRepository.Exists(x => x.Id == id)) { throw new Exception("AvaliacaoFicha nao existe"); }
+                        
             this.AvaliacaoFichaRepository.Delete(avaliacaoFicha);
 
             return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
