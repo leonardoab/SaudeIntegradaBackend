@@ -72,19 +72,19 @@ namespace SaudeIntegrada.Application.Service
             return this.mapper.Map<IEnumerable<ContaDto>>(conta);
         }
 
-        public IEnumerable<ContaDto> BuscarPorEmail(string email)
+        public List<ContaDto> BuscarPorEmail(string email)
         {
             var listaContas = ContaRepository.Find(x => x.Email == email).ToList();
 
-            return (IEnumerable<ContaDto>)listaContas;
+            return this.mapper.Map<List<ContaDto>>(listaContas);
 
         }
 
-        public IEnumerable<ContaDto> BuscarPorTelefone(string telefone)
+        public List<ContaDto> BuscarPorTelefone(string telefone)
         {
             var listaContas = ContaRepository.Find(x => x.Telefone == telefone).ToList();
 
-            return (IEnumerable<ContaDto>)listaContas;
+            return this.mapper.Map<List<ContaDto>>(listaContas);
 
         }
 

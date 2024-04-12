@@ -19,8 +19,8 @@ namespace SaudeIntegrada.Application.IService
 
         IEnumerable<ContaDto> ObterTodos();
 
-        IEnumerable<ContaDto> BuscarPorEmail(string email);
+        List<ContaDto> BuscarPorEmail(string email);
 
-        IEnumerable<ContaDto> BuscarPorTelefone(string telefone);
+        List<ContaDto> BuscarPorTelefone(string telefone);
     }
 }
