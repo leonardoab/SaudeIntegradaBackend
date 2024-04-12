@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
+using SaudeIntegrada.Application.Service;
 
 namespace SaudeIntegrada.Tests.Domain
 {
@@ -13,17 +14,30 @@ namespace SaudeIntegrada.Tests.Domain
         public PessoaTest(DependencyInjection dependencyInjection)
         {
             _PessoaService = dependencyInjection.ServiceProvider.GetRequiredService<IPessoaService>();
+            _ContaService = dependencyInjection.ServiceProvider.GetRequiredService<IContaService>();
         }
 
         [Fact]
-        public async Task DeveCriarPessoaComSucesso()
+        public void DeveCriarPessoaComSucesso()
         {
-            PessoaDto pessoa = new PessoaDto()
+
+            var conta = new ContaCriarDto()
             {
-                Nome = "Teste Criar",
+                Email = $"pessoa_{utils.RandomString(6)}@teste.com",
+                Password = "123456",
+                Apelido = $"pessoa_{utils.RandomString(6)}",
+                Telefone = utils.RandomNumber(10)
+            };
+
+            var objConta = _ContaService.Criar(conta);
+
+            var pessoa = new PessoaCriarDto()
+            {
+                Nome = $"Pessoa {utils.RandomString(6)}",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                Telefone = "21988665544"
+                Telefone = utils.RandomNumber(10),
+                IdConta = objConta.Id
             };
 
             var result = _PessoaService.Criar(pessoa);
@@ -32,7 +46,7 @@ namespace SaudeIntegrada.Tests.Domain
             var guidOutput = Guid.Empty;
             var blnDelete = Guid.TryParse(result.Id.ToString(), out guidOutput);   
             if(blnDelete)
-                _PessoaService.Apagar(result);
+                _PessoaService.Apagar(result.Id);
         }
 
         [Fact]
@@ -53,22 +67,24 @@ namespace SaudeIntegrada.Tests.Domain
             var guidOutput = Guid.Empty;
             var blnDelete = Guid.TryParse(result.Id.ToString(), out guidOutput);
             if (blnDelete)
-                _PessoaService.Apagar(result);
+                _PessoaService.Apagar(result.Id);
         }
 
 
         [Fact]
         public async Task DeveApagar()
         {
-            PessoaDto pessoa = new PessoaDto()
+            var pessoa = new PessoaCriarDto()
             {
-                Id = new Guid("e50734bc-947b-4bc7-c7e3-08dc5a911117"),
-                Nome = "Teste Criar",
+                Nome = "Teste Apagar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
                 Telefone = "21988665544"
             };
-            var result = _PessoaService.Apagar(pessoa);
+
+            var resultCriar = _PessoaService.Criar(pessoa);
+
+            var result = _PessoaService.Apagar(resultCriar.Id);
             Assert.True(result is not null);
         }
 
