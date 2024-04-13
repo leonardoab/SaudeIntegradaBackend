@@ -1,14 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using SaudeIntegrada.Api.Controllers;
 using SaudeIntegrada.Application.Dto;
 using SaudeIntegrada.Application.IService;
-using SaudeIntegrada.Application.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaudeIntegrada.Tests.Domain
 {

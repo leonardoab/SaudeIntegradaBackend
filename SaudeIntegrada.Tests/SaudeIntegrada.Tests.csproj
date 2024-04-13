@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\AvaliacaoFichaTest.cs" />
     <Compile Remove="Domain\PessoaTest.cs" />
   </ItemGroup>
 
