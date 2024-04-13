@@ -21,57 +21,42 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public void DeveCriarPessoaComSucesso()
         {
+            //var resultList = _ContaService.ObterTodos();
+            //var objConta = resultList.FirstOrDefault();
 
-            var conta = new ContaCriarDto()
-            {
-                Email = $"pessoa_{utils.RandomString(6)}@teste.com",
-                Password = "123456",
-                Apelido = $"pessoa_{utils.RandomString(6)}",
-                Telefone = utils.RandomNumber(10)
-            };
-
-            var objConta = _ContaService.Criar(conta);
-
-            var pessoa = new PessoaCriarDto()
+            PessoaCriarDto pessoa = new PessoaCriarDto()
             {
                 Nome = $"Pessoa {utils.RandomString(6)}",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                //Telefone = utils.RandomNumber(10),
-                //IdConta = objConta.Id
+                ContaId =  new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
             };
 
             var result = _PessoaService.Criar(pessoa);
             Assert.True(result is not null);
-            
-            var guidOutput = Guid.Empty;
-            var blnDelete = Guid.TryParse(result.Id.ToString(), out guidOutput);   
-            if(blnDelete)
-                _PessoaService.Apagar(result.Id);
         }
 
+
+        //to do
         [Fact]
         public async Task DeveEditar()
         {
             PessoaDto pessoa = new PessoaDto()
             {
-                Id = new Guid("3b950eb5-a533-4cb8-4792-08dc5983dd45"),
+                Id = new Guid("cccb2dd5-814f-418c-ab29-80c74f970675"),
                 Nome = "Teste Editar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                //Telefone = "21988665544"
+                ContaId = new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
             };
 
             var result = _PessoaService.Editar(pessoa);
             Assert.True(result is not null);
             
-            var guidOutput = Guid.Empty;
-            var blnDelete = Guid.TryParse(result.Id.ToString(), out guidOutput);
-            if (blnDelete)
-                _PessoaService.Apagar(result.Id);
         }
 
 
+        //to do
         [Fact]
         public async Task DeveApagar()
         {
@@ -80,7 +65,7 @@ namespace SaudeIntegrada.Tests.Domain
                 Nome = "Teste Apagar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                //Telefone = "21988665544"
+                ContaId = new Guid("3b950eb5-a533-4cb8-4792-08dc5983dd45")
             };
 
             var resultCriar = _PessoaService.Criar(pessoa);
