@@ -22,17 +22,21 @@ namespace SaudeIntegrada.Tests.Domain
             _ExercicioFichaService = dependencyInjection.ServiceProvider.GetRequiredService<IExercicioFichaService>();
         }
 
-        //[Fact]
-        //public async Task DeveCriarFichaComSucesso()
-        //{
-        //    var ficha = new ExercicioFichaDto()
-        //    {
-        //    };
+        [Fact]
+        public async Task DeveCriarFichaComSucesso()
+        {
+            var ficha = new ExercicioFichaCriarDto()
+            {   
+                Observacoes = "Aluno cardíaco",
+                Carga = "10",
+                Repeticoes = "10",
+                Sets = "3",
+                IdExercicioBase = new Guid("0bb832a3-1a70-4dbe-872f-08dc5b6ef17a")
+            };
 
-        //    var controller = new ExercicioFichaController(_ExercicioFichaService);
-        //    var result = controller.Criar(ficha);
+            var result = _ExercicioFichaService.Criar(ficha);
 
-        //    Assert.True(result is CreatedResult);
-        //}
+            Assert.True(result is CreatedResult);
+        }
     }
 }
