@@ -13,7 +13,19 @@ namespace SaudeIntegrada.Application.Profile
         public ExercicioFichaProfile()
         {
             CreateMap<ExercicioFichaDto, ExercicioFicha>();
-            CreateMap<ExercicioFicha, ExercicioFichaDto>();
+            CreateMap<ExercicioFicha, ExercicioFichaDto>()
+                  .AfterMap((s, d) =>
+                {                   
+
+                    d.IdExercicioBase = s.ExercicioBase.Id;
+
+
+
+                });
+
+
+
+
             CreateMap<ExercicioFichaCriarDto, ExercicioFicha>();
         }
     }

@@ -11,7 +11,7 @@ namespace SaudeIntegrada.Domain.Domains
     {
         public string Sets { get; set; } //4 series
         public string Repeticoes { get; set; } // 8 a 10 repeticoes
-        public ExercicioBase ExercicioBase { get; set; }
+        public virtual ExercicioBase ExercicioBase { get; set; }
         public string Observacoes { get; set; }
         public string Carga {  get; set; }
 

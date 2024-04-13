@@ -10,7 +10,7 @@ namespace SaudeIntegrada.Domain.Domains
     public class Ficha : Entity<Guid>
     {
         public string Nome { get; set; }
-        public virtual IList<ExercicioFicha> ExerciciosFicha { get; set; }
+        public virtual IList<ExercicioFicha> ExerciciosFicha { get; set; } = new List<ExercicioFicha>();
 
     }
 }

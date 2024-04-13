@@ -22,8 +22,8 @@ namespace SaudeIntegrada.Domain.Domains
         public string ZonaQueima { get; set; }
         public string Objetivo {  get; set; }
         
-        public Pessoa Pessoa { get; set; }
-        public virtual IList<Ficha> Fichas { get; set; } 
-
+        public virtual Pessoa Pessoa { get; set; } 
+        public virtual IList<Ficha> Fichas { get; set; }  = new List<Ficha>();
+         
     }
 }

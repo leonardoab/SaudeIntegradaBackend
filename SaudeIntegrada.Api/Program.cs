@@ -16,12 +16,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-var connectionString = builder.Configuration.GetConnectionString("SaudeIntegradaConnection");
+/*var connectionString = builder.Configuration.GetConnectionString("SaudeIntegradaConnection");
 
 builder.Services.AddDbContext<SaudeIntegradaContext>(options =>
 {
     // Defina a montagem de migrações correta aqui
     options.UseSqlServer(connectionString, b => b.MigrationsAssembly("SaudeIntegrada.Api"));
+});*/
+
+builder.Services.AddDbContext<SaudeIntegradaContext>(c =>
+{
+    c.UseLazyLoadingProxies()
+     .UseSqlServer(builder.Configuration.GetConnectionString("SaudeIntegradaConnection"), b => b.MigrationsAssembly("SaudeIntegrada.Api"));
 });
 
 builder.Services.AddAutoMapper(typeof(AvaliacaoFichaProfile).Assembly);
