@@ -21,15 +21,15 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public void DeveCriarPessoaComSucesso()
         {
-            //var resultList = _ContaService.ObterTodos();
-            //var objConta = resultList.FirstOrDefault();
+            var listConta = _ContaService.ObterTodos();
+            var objConta = listConta.FirstOrDefault();
 
             PessoaCriarDto pessoa = new PessoaCriarDto()
             {
                 Nome = $"Pessoa {utils.RandomString(6)}",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                ContaId =  new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
+                ContaId = objConta.Id
             };
 
             var result = _PessoaService.Criar(pessoa);
@@ -41,13 +41,16 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public async Task DeveEditar()
         {
+            var listPessoa = _PessoaService.ObterTodos();
+            var objPessoa = listPessoa.FirstOrDefault();
+
             PessoaDto pessoa = new PessoaDto()
             {
-                Id = new Guid("cccb2dd5-814f-418c-ab29-80c74f970675"),
+                Id = objPessoa.Id,
                 Nome = "Teste Editar",
                 DataNascimento = DateTime.Now,
                 Sexo = "M",
-                ContaId = new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
+                ContaId = objPessoa.ContaId
             };
 
             var result = _PessoaService.Editar(pessoa);
