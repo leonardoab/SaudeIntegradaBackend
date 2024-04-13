@@ -46,10 +46,6 @@ namespace SaudeIntegrada.Tests.Domain
                 Id = new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
             };
 
-            //var resultCriar = _ContaService.Criar(conta);
-
-            //resultCriar.Apelido = $"editado_{utils.RandomString(6)}";
-
             var result = _ContaService.Editar(request);
             Assert.True(result is not null);
         }
