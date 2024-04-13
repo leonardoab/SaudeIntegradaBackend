@@ -24,10 +24,10 @@ namespace SaudeIntegrada.Tests.Domain
         {
             var conta = new ContaCriarDto()
             {
-                Email = "teste_conta@teste.com",
+                Email = $"criar_{utils.RandomString(6)}@teste.com",
                 Password = "123456",
-                Apelido = "teste_conta",
-                Telefone = "21958922465"
+                Apelido = $"conta_{utils.RandomString(6)}",
+                Telefone = utils.RandomNumber(11)
             };
 
             var result = _ContaService.Criar(conta);
@@ -37,19 +37,20 @@ namespace SaudeIntegrada.Tests.Domain
         [Fact]
         public async Task DeveEditar()
         {
-            var conta = new ContaCriarDto()
+            var request = new ContaDto()
             {
-                Email = "teste2@teste.com",
+                Email = $"editadorconta_{utils.RandomString(6)}@teste.com",
                 Password = "123456",
-                Apelido = "teste2",
-                Telefone = "21958926654"
+                Apelido = $"conta_{utils.RandomString(6)}",
+                Telefone = utils.RandomNumber(11),
+                Id = new Guid("087ff101-60c8-4f06-d3a2-08dc5aa7fdec")
             };
 
-            var resultCriar = _ContaService.Criar(conta);
+            //var resultCriar = _ContaService.Criar(conta);
 
-            resultCriar.Apelido = "teste112";
+            //resultCriar.Apelido = $"editado_{utils.RandomString(6)}";
 
-            var result = _ContaService.Editar(resultCriar);
+            var result = _ContaService.Editar(request);
             Assert.True(result is not null);
         }
 
@@ -59,10 +60,10 @@ namespace SaudeIntegrada.Tests.Domain
         {
             var conta = new ContaCriarDto()
             {
-                Email = "teste3@teste.com",
+                Email = $"apagarconta_{utils.RandomString(6)}@teste.com",
                 Password = "123456",
-                Apelido = "teste5",
-                Telefone = "21958566654",
+                Apelido = $"conta_{utils.RandomString(6)}",
+                Telefone = utils.RandomNumber(11)
             };
 
             var contaCriada = _ContaService.Criar(conta);
@@ -79,11 +80,11 @@ namespace SaudeIntegrada.Tests.Domain
 
 
         [Fact]
-        public async Task DeveObterPessoaPorId()
+        public async Task DeveObterContaPorId()
         {
             var resultList = _ContaService.ObterTodos();
-            var objPessoa = resultList.FirstOrDefault();
-            var result = _ContaService.Obter(objPessoa.Id);
+            var objConta = resultList.FirstOrDefault();
+            var result = _ContaService.Obter(objConta.Id);
             Assert.True(result is not null);
         }
 

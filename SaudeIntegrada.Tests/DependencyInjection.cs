@@ -22,7 +22,7 @@ namespace SaudeIntegrada.Tests
             //var connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase";
             
             serviceColletion.AddDbContext<SaudeIntegradaContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True; Initial Catalog=SaudeIntegradaDatabase", b => b.MigrationsAssembly("SaudeIntegrada.Api")));
-            
+
             serviceColletion.AddAutoMapper(typeof(AvaliacaoFichaProfile).Assembly);
             serviceColletion.AddAutoMapper(typeof(ContaProfile).Assembly);
             serviceColletion.AddAutoMapper(typeof(ExercicioBaseProfile).Assembly);
