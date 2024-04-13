@@ -13,8 +13,8 @@ namespace SaudeIntegrada.Application.Profile
         public AvaliacaoFichaProfile()
         {
             CreateMap<AvaliacaoFichaDto, AvaliacaoFicha>();
-            CreateMap<AvaliacaoFicha, AvaliacaoFichaDto>();
-                /*.AfterMap((s, d) =>
+            CreateMap<AvaliacaoFicha, AvaliacaoFichaDto>()
+                .AfterMap((s, d) =>
                 {
                     
 
@@ -22,7 +22,7 @@ namespace SaudeIntegrada.Application.Profile
 
 
 
-                });*/
+                });
 
 
 
