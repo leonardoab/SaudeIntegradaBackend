@@ -43,6 +43,11 @@ namespace SaudeIntegrada.Application.Service
         public ExercicioFichaDto Editar(ExercicioFichaDto dto)
         {
             ExercicioFicha exercicioFicha = this.mapper.Map<ExercicioFicha>(dto);
+
+            ExercicioBase exercicioBase = ExercicioBaseRepository.GetById(dto.IdExercicioBase);
+
+            exercicioFicha.ExercicioBase = exercicioBase;
+
             this.ExercicioFichaRepository.Update(exercicioFicha);
 
             return this.mapper.Map<ExercicioFichaDto>(exercicioFicha);

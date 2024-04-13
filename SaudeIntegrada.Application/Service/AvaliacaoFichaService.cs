@@ -44,6 +44,8 @@ namespace SaudeIntegrada.Application.Service
         public AvaliacaoFichaDto Editar(AvaliacaoFichaDto dto)
         {
             AvaliacaoFicha avaliacaoFicha = this.mapper.Map<AvaliacaoFicha>(dto);
+            Pessoa pessoa = PessoaRepository.GetById(dto.IdPessoa);
+            avaliacaoFicha.Pessoa = pessoa;
             this.AvaliacaoFichaRepository.Update(avaliacaoFicha);
 
             return this.mapper.Map<AvaliacaoFichaDto>(avaliacaoFicha);
